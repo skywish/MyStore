@@ -31,6 +31,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         edit_email = (EditText) findViewById(R.id.login_edit_email);
         edit_password = (EditText) findViewById(R.id.login_edit_password);
+        edit_email.setText("752197149@qq.com");
+        edit_password.setText("chi81609951");
 
         login = (Button) findViewById(R.id.login_button_login);
         login.setOnClickListener(this);
@@ -78,7 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void onFailure(int i, String s) {
-                Toast.makeText(LoginActivity.this, "登陆失败",
+                Toast.makeText(LoginActivity.this, "登陆失败" + s,
                         Toast.LENGTH_SHORT).show();
             }
         });

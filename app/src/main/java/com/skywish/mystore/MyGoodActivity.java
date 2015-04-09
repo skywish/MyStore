@@ -23,6 +23,7 @@ import cn.bmob.v3.listener.FindListener;
 public class MyGoodActivity extends BaseActivity implements View.OnClickListener{
 
     private Button addGood;
+    private Button btn_refresh;
     private ProgressBar progressBar;
     private ListView list_mygood;
     private TextView tv_no;
@@ -46,6 +47,8 @@ public class MyGoodActivity extends BaseActivity implements View.OnClickListener
         list_mygood = (ListView) findViewById(R.id.lv_goodlist);
         tv_no = (TextView) findViewById(R.id.tv_no);
 
+        btn_refresh = (Button) findViewById(R.id.myGood_btn_refresh);
+        btn_refresh.setOnClickListener(this);
         addGood = (Button) findViewById(R.id.btn_addgood);
         addGood.setOnClickListener(this);
         queryMyGood();
@@ -56,6 +59,9 @@ public class MyGoodActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_addgood:
                 AddgoodActivity.activityStart(MyGoodActivity.this, username);
+                break;
+            case R.id.myGood_btn_refresh:
+                queryMyGood();
                 break;
             default:
                 break;
@@ -78,6 +84,10 @@ public class MyGoodActivity extends BaseActivity implements View.OnClickListener
                 progressBar.setVisibility(View.GONE);
                 tv_no.setVisibility(View.GONE);
                 list_mygood.setVisibility(View.VISIBLE);
+                if (myGoodAdapter != null) {
+                    myGoodAdapter.clear();
+                    myGoodAdapter.notifyDataSetChanged();
+                }
                 myGoodAdapter = new MyGoodAdapter(getApplicationContext(),
                         R.layout.mygood_goodlist, goods);
                 list_mygood.setAdapter(myGoodAdapter);

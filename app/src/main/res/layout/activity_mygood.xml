@@ -40,10 +40,17 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/mygood_shopname"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"/>
+
+            <Button
+                android:id="@+id/myGood_btn_refresh"
+                android:background="@drawable/mini_webview_refresh"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/mygood_shopname"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="26dp"
-                android:layout_marginEnd="26dp" />
+                android:layout_marginRight="60dp" />
         </RelativeLayout>
     </LinearLayout>
 

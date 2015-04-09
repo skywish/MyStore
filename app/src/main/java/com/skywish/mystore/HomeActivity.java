@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
 
 
@@ -37,6 +39,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     private Button search;
     private EditText et_search;
     private String searchText = "";
+    private List<Good> goodList;
+    static BmobFile pic;
 
     public static void activityStart(Context context, String data) {
         Intent intent = new Intent(context, HomeActivity.class);
@@ -81,6 +85,26 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         ImageLoader.getInstance().init(config);
 
         queryAllGood();
+
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Good good = goodList.get(position);
+                pic = good.getPic();
+//                String title = good.getTitle();
+//                String describe = good.getDescribe();
+//                String price = good.getPrice();
+//                Toast.makeText(HomeActivity.this, good.getTitle()+good.getDescribe()+good.getPrice(),
+//                        Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(HomeActivity.this, GoodDetailActivity.class);
+//                intent.putExtra("title", title);
+//                intent.putExtra("describe", describe);
+//                intent.putExtra("price", price);
+//                startActivity(intent);
+                GoodDetailActivity.activityStart(HomeActivity.this,
+                        good.getTitle(), good.getDescribe(), good.getPrice());
+            }
+        });
     }
 
     public void queryAllGood() {
@@ -91,6 +115,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         query.findObjects(this, new FindListener<Good>() {
             @Override
             public void onSuccess(List<Good> goods) {
+                goodList = goods;
                 if (goods == null || goods.size() == 0) {
                     Toast.makeText(HomeActivity.this, "没有货品",
                             Toast.LENGTH_SHORT).show();
