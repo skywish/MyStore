@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.etsy.android.grid.util.DynamicHeightImageView
+        android:id="@+id/main_goodList_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/main_goodList_like"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_action_not_important" />
+    <TextView
+        android:id="@+id/main_goodList_title"
+        android:background="@color/white"
+        android:text="商品1"
+        android:textSize="24sp"
+        android:layout_below="@id/main_goodList_pic"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/main_goodList_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/main_goodList_describe"
+            android:text="令狐冲"
+            android:gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/main_goodList_price"
+            android:text="￥20 RMB"
+            android:gravity="right"
+            android:textColor="#FF0000"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

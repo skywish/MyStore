@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--main_activity_card-->
+    <dimen name="actions_padding">8dp</dimen>
+
+    <dimen name="setting_cardwidth">116dp</dimen>
+    <dimen name="setting_cardheight">150dp</dimen>
+    <dimen name="setting_cardmargin">3dp</dimen>
+    <dimen name="addgood_textsize">17sp</dimen>
+    <dimen name="mygood_listtextsize">18sp</dimen>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabHost android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+            <RadioGroup
+                android:gravity="center_vertical"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:id="@+id/main_radio"
+                android:background="#151515"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:paddingTop="5dp">
+
+                <RadioButton
+                    android:id="@+id/radio_home"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/tab_btn_home"
+                    android:button="@null"
+                    android:text="首页"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:layout_height="match_parent" />
+
+                <RadioButton
+                    android:id="@+id/radio_shop"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/tab_btn_shop"
+                    android:button="@null"
+                    android:text="小店"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:layout_height="match_parent" />
+
+                <RadioButton
+                    android:id="@+id/radio_profile"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/tab_btn_profile"
+                    android:button="@null"
+                    android:text="我"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:layout_height="match_parent" />
+
+            </RadioGroup>
+
+    </LinearLayout>
+
+</TabHost>

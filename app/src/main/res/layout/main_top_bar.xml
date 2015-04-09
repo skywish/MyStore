@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="@color/bar_color"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+
+    <ImageView
+        android:src="@drawable/icon_tab_search_normal"
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <EditText
+        android:layout_gravity="center"
+        android:background="#555555"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp" />
+
+    <Button
+        android:id="@+id/main_bar_refresh"
+        android:background="@drawable/tm_home_refresh_small_normal"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:layout_width="18dp"
+        android:layout_height="18dp" />
+</LinearLayout>
