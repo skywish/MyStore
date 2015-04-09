@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.etsy.android.grid.StaggeredGridView;
@@ -21,6 +22,7 @@ import com.skywish.mystore.adapter.AllGoodAdapter;
 import com.skywish.mystore.model.Good;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -32,6 +34,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     private StaggeredGridView mGridView;
     private AllGoodAdapter allGoodAdapter;
     private Button refresh;
+    private Button search;
+    private EditText et_search;
+    private String searchText = "";
 
     public static void activityStart(Context context, String data) {
         Intent intent = new Intent(context, HomeActivity.class);
@@ -44,9 +49,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGridView = (StaggeredGridView) findViewById(R.id.grid_view);
+        et_search = (EditText) findViewById(R.id.main_bar_searchEdit);
 
         refresh = (Button) findViewById(R.id.main_bar_refresh);
         refresh.setOnClickListener(this);
+
+        search = (Button) findViewById(R.id.main_bar_search);
+        search.setOnClickListener(this);
 
 //        getApplicationContext() 返回应用的上下文，生命周期是整个应用，应用摧毁它才摧毁
 //        Activity.this的context 返回当前activity的上下文
@@ -106,11 +115,58 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         });
     }
 
+    public void searchGood() {
+        searchText = et_search.getText().toString();
+        BmobQuery<Good> query1 = new BmobQuery<Good>();
+        query1.addWhereEqualTo("title", searchText);
+        query1.addQueryKeys("title,describe,price,pic");
+
+        BmobQuery<Good> query2 = new BmobQuery<Good>();
+        query2.addWhereEqualTo("describe", searchText);
+        query2.addQueryKeys("title,describe,price,pic");
+
+        List<BmobQuery<Good>> queries = new ArrayList<BmobQuery<Good>>();
+        queries.add(query1);
+        queries.add(query2);
+
+        BmobQuery<Good> query = new BmobQuery<Good>();
+        query.or(queries);
+        //执行查询，第一个参数为上下文，第二个参数为查找的回调
+        query.findObjects(this, new FindListener<Good>() {
+            @Override
+            public void onSuccess(List<Good> goods) {
+                if (goods == null || goods.size() == 0) {
+                    Toast.makeText(HomeActivity.this, "没有货品",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//                progressBar.setVisibility(View.GONE);
+//                tv_no.setVisibility(View.GONE);
+                if (allGoodAdapter != null) {
+                    allGoodAdapter.clear();
+                    allGoodAdapter.notifyDataSetChanged();
+                }
+                allGoodAdapter = new AllGoodAdapter(getApplicationContext(),
+                        R.layout.main_goodlist, goods);
+                mGridView.setAdapter(allGoodAdapter);
+            }
+
+            @Override
+            public void onError(int code, String arg0) {
+                Toast.makeText(HomeActivity.this, "没有货品",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.main_bar_refresh:
                 queryAllGood();
+                break;
+            case R.id.main_bar_search:
+                searchGood();
                 break;
             default:
                 break;

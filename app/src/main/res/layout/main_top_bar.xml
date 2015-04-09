@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="48dp">
 
-    <ImageView
-        android:src="@drawable/icon_tab_search_normal"
+    <Button
+        android:id="@+id/main_bar_search"
+        android:background="@drawable/icon_tab_search_normal"
         android:layout_marginLeft="40dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_gravity="center"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
 
     <EditText
+        android:id="@+id/main_bar_searchEdit"
         android:layout_gravity="center"
         android:background="#555555"
         android:textColor="@color/white"
