@@ -7,7 +7,8 @@
         android:id="@+id/tv_name"
         android:text="商品1"
         android:textSize="@dimen/mygood_listtextsize"
-        android:layout_width="128dp"
+        android:layout_width="0dp"
+        android:layout_weight="3"
         android:gravity="center"
         android:layout_height="match_parent" />
 
@@ -15,7 +16,8 @@
         android:id="@+id/tv_sales"
         android:text="8"
         android:textSize="@dimen/mygood_listtextsize"
-        android:layout_width="128dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:layout_height="match_parent" />
 
@@ -23,8 +25,22 @@
         android:id="@+id/tv_stock"
         android:text="1"
         android:textSize="@dimen/mygood_listtextsize"
-        android:layout_width="128dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/myGoodList_delete"
+            android:background="@drawable/mygood_delete"
+            android:layout_centerInParent="true"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+    </RelativeLayout>
+
 
 </LinearLayout>
