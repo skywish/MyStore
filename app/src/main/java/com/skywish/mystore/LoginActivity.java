@@ -31,8 +31,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         edit_email = (EditText) findViewById(R.id.login_edit_email);
         edit_password = (EditText) findViewById(R.id.login_edit_password);
-//        edit_email.setText("752197149@qq.com");
-//        edit_password.setText("chi81609951");
 
         login = (Button) findViewById(R.id.login_button_login);
         login.setOnClickListener(this);
